@@ -31,19 +31,30 @@
         .platform-dl { display: inline-block; background: #b8a590; color: white; padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
         .platform-dl:hover { background: #9b8a74; }
         .coming-soon { display: inline-block; padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; color: #b8a590; border: 2px dashed #b8a590; }
-        .features { max-width: 900px; margin: 0 auto 60px; padding: 0 20px; }
+        .section { max-width: 900px; margin: 0 auto 60px; padding: 0 20px; }
         h2 { text-align: center; font-size: 28px; margin-bottom: 32px; }
         .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         .feature-item { background: #fffaf2; border: 1px solid #d4c9b8; border-radius: 12px; padding: 24px; text-align: center; }
         .feature-icon { font-size: 32px; margin-bottom: 10px; }
         .feature-item h3 { font-size: 16px; margin-bottom: 6px; }
         .feature-item p { font-size: 13px; color: #6b5e4f; line-height: 1.5; }
-        .screenshot { max-width: 800px; margin: 0 auto 60px; padding: 0 20px; text-align: center; }
-        .screenshot img { max-width: 100%; border-radius: 12px; border: 2px solid #d4c9b8; box-shadow: 0 8px 30px rgba(0,0,0,0.10); }
+        .screenshot-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; }
+        .screenshot-card { background: #fffaf2; border: 2px solid #d4c9b8; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+        .screenshot-card img { width: 100%; display: block; border-bottom: 2px solid #d4c9b8; }
+        .screenshot-card .caption { padding: 16px; }
+        .screenshot-card h3 { font-size: 16px; margin-bottom: 4px; }
+        .screenshot-card p { font-size: 13px; color: #6b5e4f; }
+        .faq-item { background: #fffaf2; border: 1px solid #d4c9b8; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 18px 24px; font-weight: 600; font-size: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question:hover { background: #faf6ef; }
+        .faq-question::after { content: '+'; font-size: 20px; color: #b8a590; }
+        .faq-item.open .faq-question::after { content: '−'; }
+        .faq-answer { padding: 0 24px 18px; font-size: 14px; color: #6b5e4f; line-height: 1.7; display: none; }
+        .faq-item.open .faq-answer { display: block; }
         footer { text-align: center; padding: 40px 20px; border-top: 2px solid #d4c9b8; margin-top: 40px; }
         footer p { font-size: 13px; color: #8b7b66; }
         footer a { color: #3a3226; text-decoration: underline; }
-        @media (max-width:600px){ h1{font-size:28px} .logo{font-size:56px} .platform-card{width:140px;padding:20px 14px} }
+        @media (max-width:600px){ h1{font-size:28px} .logo{font-size:56px} .platform-card{width:140px;padding:20px 14px} .screenshot-gallery{grid-template-columns:1fr} }
     </style>
 </head>
 <body>
@@ -79,52 +90,114 @@
         <div class="platform-status">Coming Soon</div>
         <span class="coming-soon">Soon</span>
     </div>
-    <div class="platform-card">
-        <div class="platform-icon">📱</div>
-        <div class="platform-name">Mobile</div>
-        <div class="platform-status">iOS · Android</div>
-        <span class="coming-soon">Soon</span>
+</div>
+
+<!-- Screenshots Gallery -->
+<div class="section">
+    <h2>📸 Take a Tour</h2>
+    <div class="screenshot-gallery">
+        <div class="screenshot-card">
+            <img src="screenshots/browser-screenshot.png" alt="Full Browser" onerror="this.parentElement.style.display='none'">
+            <div class="caption"><h3>Main Browser</h3><p>Chrome-style tabs, URL bar, and status panel.</p></div>
+        </div>
+        <div class="screenshot-card">
+            <img src="screenshots/settings.png" alt="Settings" onerror="this.parentElement.style.display='none'">
+            <div class="caption"><h3>⚙️ Settings</h3><p>Customize homepage, search engine, and user agent.</p></div>
+        </div>
+        <div class="screenshot-card">
+            <img src="screenshots/bookmarks.png" alt="Bookmarks" onerror="this.parentElement.style.display='none'">
+            <div class="caption"><h3>⭐ Bookmarks</h3><p>Save and organize your favorite pages.</p></div>
+        </div>
+        <div class="screenshot-card">
+            <img src="screenshots/history.png" alt="History" onerror="this.parentElement.style.display='none'">
+            <div class="caption"><h3>📜 History</h3><p>Search and revisit pages you've browsed.</p></div>
+        </div>
+        <div class="screenshot-card">
+            <img src="screenshots/downloads.png" alt="Downloads" onerror="this.parentElement.style.display='none'">
+            <div class="caption"><h3>📥 Downloads</h3><p>Track and manage all your downloads.</p></div>
+        </div>
     </div>
 </div>
 
-<div class="screenshot">
-    <h2>Clean. Fast. Developer‑Focused.</h2>
-    <img src="../screenshots/browser-screenshot.png" alt="Tariu Browser" onerror="this.style.display='none'">
-</div>
-
-<div class="features">
+<!-- Features -->
+<div class="section">
     <h2>Why Tariu?</h2>
     <div class="feature-grid">
-        <div class="feature-item">
-            <div class="feature-icon">🏠</div>
-            <h3>Built-in Homepage</h3>
-            <p>Beautiful search page with quick links — no external server needed.</p>
+        <div class="feature-item"><div class="feature-icon">🏠</div><h3>Built-in Homepage</h3><p>Beautiful search page — no external server needed.</p></div>
+        <div class="feature-item"><div class="feature-icon">📑</div><h3>Multi-Tab Browsing</h3><p>Chrome-style tabs with full keyboard shortcuts.</p></div>
+        <div class="feature-item"><div class="feature-icon">⭐</div><h3>Bookmarks & History</h3><p>Persistent, searchable, stored locally.</p></div>
+        <div class="feature-item"><div class="feature-icon">🛠</div><h3>DevTools Built-In</h3><p>Press F12 for full Chrome DevTools.</p></div>
+        <div class="feature-item"><div class="feature-icon">🎨</div><h3>Retro-Modern UI</h3><p>Warm design with SVG icons, no clutter.</p></div>
+        <div class="feature-item"><div class="feature-icon">📊</div><h3>Live Telemetry</h3><p>Real-time CPU & RAM in status bar.</p></div>
+    </div>
+</div>
+
+<!-- FAQ -->
+<div class="section">
+    <h2>❓ Frequently Asked Questions</h2>
+    
+    <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I change the homepage?</div>
+        <div class="faq-answer">Click ☰ → <strong>Tools</strong> → <strong>Settings</strong>. Enter any URL in the <strong>Homepage</strong> field. Leave blank or type <code>home</code> to use the built-in homepage with search.</div>
+    </div>
+    
+    <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I change the search engine?</div>
+        <div class="faq-answer">Click ☰ → <strong>Tools</strong> → <strong>Settings</strong>. In the <strong>Search Engine URL</strong> field, paste a URL with <code>%s</code> where the search query goes.<br><br>Examples:<br>• Google: <code>https://www.google.com/search?q=%s</code><br>• DuckDuckGo: <code>https://duckduckgo.com/?q=%s</code></div>
+    </div>
+    
+    <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I bookmark a page?</div>
+        <div class="faq-answer">Click the ⭐ button in the toolbar, or press <strong>Ctrl+D</strong>. The star turns gold when bookmarked. View all bookmarks at ☰ → <strong>Bookmarks</strong> → <strong>Show Bookmarks</strong> (Ctrl+B).</div>
+    </div>
+    
+    <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I view my browsing history?</div>
+        <div class="faq-answer">Click ☰ → <strong>History</strong> → <strong>Show History</strong> (Ctrl+H). You can search through your history and double-click any entry to revisit it. Clear history from the same menu.</div>
+    </div>
+    
+    <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I open Developer Tools?</div>
+        <div class="faq-answer">Press <strong>F12</strong> or click ☰ → <strong>View</strong> → <strong>Developer Tools</strong>. This opens full Chrome DevTools for inspecting elements, debugging JavaScript, and monitoring network requests.</div>
+    </div>
+    
+    <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I clear browsing data?</div>
+        <div class="faq-answer">Click ☰ → <strong>Tools</strong> → <strong>Clear Browsing Data</strong>. This removes cookies, cache, and local storage. Your bookmarks and settings are not affected.</div>
+    </div>
+    
+    <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I manage downloads?</div>
+        <div class="faq-answer">Click the 📥 downloads button in the toolbar, or press <strong>Ctrl+J</strong>. This opens the Download Manager showing progress and status of all downloads.</div>
+    </div>
+    
+    <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I update the browser?</div>
+        <div class="faq-answer">The browser automatically checks for updates on startup. If a new version is available, you'll see a popup. You can also manually check at ☰ → <strong>Help</strong> → <strong>Check for Updates</strong>.</div>
+    </div>
+    
+    <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">What keyboard shortcuts are available?</div>
+        <div class="faq-answer">
+            <strong>Ctrl+T</strong> — New Tab<br>
+            <strong>Ctrl+W</strong> — Close Tab<br>
+            <strong>Ctrl+L</strong> — Focus URL Bar<br>
+            <strong>Ctrl+D</strong> — Bookmark Page<br>
+            <strong>Ctrl+F</strong> — Find in Page<br>
+            <strong>Ctrl+H</strong> — History<br>
+            <strong>Ctrl+B</strong> — Bookmarks<br>
+            <strong>Ctrl+J</strong> — Downloads<br>
+            <strong>F5 / Ctrl+R</strong> — Reload<br>
+            <strong>F11</strong> — Fullscreen<br>
+            <strong>F12</strong> — DevTools<br>
+            <strong>Alt+←</strong> — Back<br>
+            <strong>Alt+→</strong> — Forward
         </div>
-        <div class="feature-item">
-            <div class="feature-icon">📑</div>
-            <h3>Multi-Tab Browsing</h3>
-            <p>Chrome-style tabs with full keyboard shortcuts for power users.</p>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">⭐</div>
-            <h3>Bookmarks & History</h3>
-            <p>Persistent, searchable, and stored locally — your data stays yours.</p>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">🛠</div>
-            <h3>DevTools Built-In</h3>
-            <p>Press F12 for full Chrome DevTools — inspect, debug, and test.</p>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">🎨</div>
-            <h3>Retro-Modern UI</h3>
-            <p>Warm beveled design with SVG icons — no clutter, just beauty.</p>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">📊</div>
-            <h3>Live Telemetry</h3>
-            <p>Real-time CPU & RAM monitoring in the status bar.</p>
-        </div>
+    </div>
+    
+    <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Can I use a custom User Agent?</div>
+        <div class="faq-answer">Yes! Go to ☰ → <strong>Tools</strong> → <strong>Settings</strong> and enter a custom User Agent string. Leave blank to use the default Chromium user agent.</div>
     </div>
 </div>
 
