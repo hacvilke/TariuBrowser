@@ -212,4 +212,59 @@
 </footer>
 
 </body>
+<script>
+const REPO_OWNER = "hacvilke";
+const REPO_NAME = "TariuBrowser";
+
+async function fetchLatestRelease() {
+    try {
+        const response = await fetch(
+            `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases/latest`
+        );
+        
+        if (!response.ok) {
+            document.getElementById("version-badge").textContent = "v3.0.0 — Latest";
+            return;
+        }
+        
+        const release = await response.json();
+        document.getElementById("version-badge").textContent = release.tag_name + " — Latest";
+        
+        // Check Windows
+        const winAsset = release.assets.find(a => a.name.endsWith(".exe"));
+        if (winAsset) {
+            document.querySelector(".platform-card:nth-child(1) .platform-dl").href = winAsset.browser_download_url;
+            document.querySelector(".platform-card:nth-child(1) .platform-status").textContent = 
+                "64-bit · " + (winAsset.size / (1024*1024)).toFixed(1) + " MB";
+        }
+        
+        // Check macOS
+        const macAsset = release.assets.find(a => a.name.endsWith(".dmg"));
+        if (macAsset) {
+            const macCard = document.querySelector(".platform-card:nth-child(2)");
+            macCard.querySelector(".platform-status").textContent = "Apple Silicon · Intel";
+            const comingSoon = macCard.querySelector(".coming-soon");
+            if (comingSoon) {
+                comingSoon.outerHTML = '<a href="' + macAsset.browser_download_url + '" class="platform-dl">Download</a>';
+            }
+        }
+        
+        // Check Linux
+        const linuxAsset = release.assets.find(a => a.name.endsWith(".appimage") || a.name.endsWith(".deb"));
+        if (linuxAsset) {
+            const linuxCard = document.querySelector(".platform-card:nth-child(3)");
+            linuxCard.querySelector(".platform-status").textContent = "AppImage · .deb";
+            const comingSoon = linuxCard.querySelector(".coming-soon");
+            if (comingSoon) {
+                comingSoon.outerHTML = '<a href="' + linuxAsset.browser_download_url + '" class="platform-dl">Download</a>';
+            }
+        }
+        
+    } catch (error) {
+        document.getElementById("version-badge").textContent = "v3.0.0 — Latest";
+    }
+}
+
+fetchLatestRelease();
+</script>
 </html>
