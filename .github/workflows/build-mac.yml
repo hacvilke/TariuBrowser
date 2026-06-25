@@ -1,0 +1,45 @@
+﻿name: Build macOS
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install PyQt6 PyQt6-WebEngine psutil Pillow pyinstaller
+      
+      - name: Build app
+        run: |
+          pyinstaller --onedir --windowed \
+            --name "TariuBrowser" \
+            --hidden-import PyQt6.QtWebEngineCore \
+            --hidden-import PyQt6.QtWebEngineWidgets \
+            --hidden-import PyQt6.QtNetwork \
+            --hidden-import PyQt6.QtSvg \
+            src/tariu.py
+      
+      - name: Create DMG
+        run: |
+          mkdir -p dist/dmg
+          cp -R dist/TariuBrowser.app dist/dmg/
+          ln -s /Applications dist/dmg/Applications
+          hdiutil create -volname "TariuBrowser" \
+            -srcfolder dist/dmg \
+            -ov -format UDZO \
+            dist/TariuBrowser_macOS.dmg
+      
+      - name: Upload to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/TariuBrowser_macOS.dmg
