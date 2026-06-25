@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tariu DevBrowser — Retro Soul, Modern Heart</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(165deg, #f5f0e8 0%, #e8dfd1 50%, #ded5c5 100%);
+            color: #3a3226; min-height: 100vh;
+        }
+        header { text-align: center; padding: 80px 20px 40px; }
+        .logo { font-size: 80px; margin-bottom: 16px; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.1)); animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+        h1 { font-size: 42px; font-weight: 700; letter-spacing: -1px; margin-bottom: 8px; }
+        .tagline { font-size: 18px; color: #6b5e4f; }
+        .version-badge { display: inline-block; background: #b8a590; color: white; padding: 6px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-top: 16px; }
+        .hero-cta { text-align: center; margin: 20px 0 50px; }
+        .btn { display: inline-block; background: #3a3226; color: #fffaf2; padding: 14px 36px; border-radius: 10px; font-size: 16px; font-weight: 600; text-decoration: none; margin: 8px; border: 2px solid #3a3226; transition: all 0.2s; }
+        .btn:hover { background: #544a3a; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+        .btn-outline { background: transparent; color: #3a3226; }
+        .btn-outline:hover { background: #3a3226; color: #fffaf2; }
+        .platforms { display: flex; justify-content: center; flex-wrap: wrap; gap: 24px; max-width: 900px; margin: 0 auto 60px; padding: 0 20px; }
+        .platform-card { background: #fffaf2; border: 2px solid #d4c9b8; border-radius: 16px; padding: 32px 24px; width: 200px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.05); transition: transform 0.2s; }
+        .platform-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.10); }
+        .platform-icon { font-size: 44px; margin-bottom: 12px; }
+        .platform-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+        .platform-status { font-size: 13px; color: #6b5e4f; margin-bottom: 12px; }
+        .platform-dl { display: inline-block; background: #b8a590; color: white; padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
+        .platform-dl:hover { background: #9b8a74; }
+        .coming-soon { display: inline-block; padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; color: #b8a590; border: 2px dashed #b8a590; }
+        .features { max-width: 900px; margin: 0 auto 60px; padding: 0 20px; }
+        h2 { text-align: center; font-size: 28px; margin-bottom: 32px; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .feature-item { background: #fffaf2; border: 1px solid #d4c9b8; border-radius: 12px; padding: 24px; text-align: center; }
+        .feature-icon { font-size: 32px; margin-bottom: 10px; }
+        .feature-item h3 { font-size: 16px; margin-bottom: 6px; }
+        .feature-item p { font-size: 13px; color: #6b5e4f; line-height: 1.5; }
+        .screenshot { max-width: 800px; margin: 0 auto 60px; padding: 0 20px; text-align: center; }
+        .screenshot img { max-width: 100%; border-radius: 12px; border: 2px solid #d4c9b8; box-shadow: 0 8px 30px rgba(0,0,0,0.10); }
+        footer { text-align: center; padding: 40px 20px; border-top: 2px solid #d4c9b8; margin-top: 40px; }
+        footer p { font-size: 13px; color: #8b7b66; }
+        footer a { color: #3a3226; text-decoration: underline; }
+        @media (max-width:600px){ h1{font-size:28px} .logo{font-size:56px} .platform-card{width:140px;padding:20px 14px} }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">🌸</div>
+    <h1>Tariu DevBrowser</h1>
+    <p class="tagline">Retro soul, modern heart.</p>
+    <span class="version-badge">v3.0.0 — Latest</span>
+</header>
+
+<div class="hero-cta">
+    <a href="https://github.com/hacvilke/TariuBrowser/releases/latest" class="btn">⬇ Download Latest</a>
+    <a href="https://github.com/hacvilke/TariuBrowser" class="btn btn-outline">📁 View on GitHub</a>
+</div>
+
+<div class="platforms" id="download">
+    <div class="platform-card">
+        <div class="platform-icon">🪟</div>
+        <div class="platform-name">Windows</div>
+        <div class="platform-status">64-bit · Installer</div>
+        <a href="https://github.com/hacvilke/TariuBrowser/releases/latest" class="platform-dl">Download</a>
+    </div>
+    <div class="platform-card">
+        <div class="platform-icon">🍎</div>
+        <div class="platform-name">macOS</div>
+        <div class="platform-status">Coming Soon</div>
+        <span class="coming-soon">Soon</span>
+    </div>
+    <div class="platform-card">
+        <div class="platform-icon">🐧</div>
+        <div class="platform-name">Linux</div>
+        <div class="platform-status">Coming Soon</div>
+        <span class="coming-soon">Soon</span>
+    </div>
+    <div class="platform-card">
+        <div class="platform-icon">📱</div>
+        <div class="platform-name">Mobile</div>
+        <div class="platform-status">iOS · Android</div>
+        <span class="coming-soon">Soon</span>
+    </div>
+</div>
+
+<div class="screenshot">
+    <h2>Clean. Fast. Developer‑Focused.</h2>
+    <img src="../screenshots/browser-screenshot.png" alt="Tariu Browser" onerror="this.style.display='none'">
+</div>
+
+<div class="features">
+    <h2>Why Tariu?</h2>
+    <div class="feature-grid">
+        <div class="feature-item">
+            <div class="feature-icon">🏠</div>
+            <h3>Built-in Homepage</h3>
+            <p>Beautiful search page with quick links — no external server needed.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">📑</div>
+            <h3>Multi-Tab Browsing</h3>
+            <p>Chrome-style tabs with full keyboard shortcuts for power users.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">⭐</div>
+            <h3>Bookmarks & History</h3>
+            <p>Persistent, searchable, and stored locally — your data stays yours.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🛠</div>
+            <h3>DevTools Built-In</h3>
+            <p>Press F12 for full Chrome DevTools — inspect, debug, and test.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🎨</div>
+            <h3>Retro-Modern UI</h3>
+            <p>Warm beveled design with SVG icons — no clutter, just beauty.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">📊</div>
+            <h3>Live Telemetry</h3>
+            <p>Real-time CPU & RAM monitoring in the status bar.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>🌸 <strong>Tariu DevBrowser</strong> — Built with PyQt6 & QtWebEngine</p>
+    <p style="margin-top:8px;">
+        <a href="https://github.com/hacvilke/TariuBrowser">GitHub</a> · 
+        <a href="https://github.com/hacvilke/TariuBrowser/issues">Report Bug</a> · 
+        <a href="https://github.com/hacvilke/TariuBrowser/releases">All Releases</a>
+    </p>
+    <p style="margin-top:16px; color:#b8a590;">© 2026 TariuSoftware. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
